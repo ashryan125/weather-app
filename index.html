@@ -9,50 +9,61 @@
      <!-- Bootstrap CSS -->
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-     <!-- internal style sheer-->
+     <!-- google fonts -->
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+          rel="stylesheet">
+     <!-- internal style sheet-->
      <link rel="stylesheet" href="./assets/css/style.css" />
      <title>Weather Dashboard</title>
 </head>
 
 <body>
 
-     <header class="container-fluid"><h1>Weather Dashboard</h1> </header>
+     <header class="container-fluid main-title">
+          <h1>Weather Dashboard</h1>
+     </header>
 
      <div class="container">
           <div class="row">
-               <div class="col-3">
-                    <div class="col">
-                         
-                              <h3 class="h3-form">Search for a City:</h3>
-                              <form id="city-form">
-                                <input name="city" id="city" type="text" autofocus="true" class="form-input" placeholder="San Diego"/>
-                                <button type="submit" class="btn">Search</button>
-                              </form>
-                          
+               <div class="col-4">
+                    <!-- form -->
+                    <div class="col mt-3">
+
+                         <h3 class="h3-form">Search for a City:</h3>
+                         <form id="city-form" class="form-group">
+                              <input name="city" id="city" type="text" class="form-control" placeholder="San Diego" />
+                              <button type="submit" class="btn btn-primary btn-block mt-2">Search</button>
+                         </form>
+
                     </div>
+                    <!-- list of previously searched cities -->
                     <div class="col">
-                         list of searched cities
+                         <ul id="city-list" class="list-group">
+                              <li class="list-group-item">Cras justo odio</li>
+                         </ul>
                     </div>
 
                </div>
-               <div class="col-9">
+
+               <div class="col-8 mt-3">
                     <div class="row">
-                    <div class="col">
-                         selected city current forecast
-                    </div>
+                         <div class="col">
+                              selected city current forecast
+                         </div>
                     </div>
                     <div class="row">
-                         <h3 style="width: 100%;">5-Day Forecast:</h3>
-                        
-                         <div id="day-1" class="col-2">day 1</div>
-                         <div id="day-2" class="col-2">day 2</div>
-                         <div id="day-3" class="col-2">day 3</div>
-                         <div id="day-4" class="col-2">day 4</div>
-                         <div id="day-5" class="col-2">day 5</div>
-      
+                         <h4 style="width: 100%;">5-Day Forecast:</h4>
+                         <div class="d-flex justify-content-around">
+                         <div id="day-1" class=".flex-column future-weather">day 1</div>
+                         <div id="day-2" class=".flex-column future-weather">day 2</div>
+                         <div id="day-3" class=".flex-column future-weather">day 3</div>
+                         <div id="day-4" class=".flex-column future-weather">day 4</div>
+                         <div id="day-5" class=".flex-column future-weather">day 5</div>
+</div>
+                    </div>
                </div>
           </div>
-     </div>
      </div>
 
      <!-- Optional JavaScript -->
