@@ -32,6 +32,23 @@ body {
      text-align: center;
 }
 
+#weather-box {
+     border: 1px solid black;
+}
+
+#title-icon {
+     width: 50px;
+     margin: 0 0 5px -7px;
+
+}
+
+#current-temp-params {
+     list-style: none;
+     padding-inline-start: 0;
+     line-height: 30px;
+
+}
+
 .future-weather {
      background-color: rgb(0, 49, 71);
      color: white;
