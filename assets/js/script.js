@@ -76,17 +76,31 @@ var displayTemp = function (temp, searchTerm) {
      // create list for temp, wind, humidity, UV index
      var tempLi = document.createElement("li");
      tempLi.textContent = "Temp: " + temp.current.temp + "°F";
+    
 
      var windLi = document.createElement("li");
-     windLi.textContent = "Humidity: " + temp.current.humidity + " %";
+     windLi.textContent = "Wind: " + temp.current.wind_speed + " MPH";
 
      var humidityLi = document.createElement("li");
-     humidityLi.textContent = "Wind: " + temp.current.wind_speed + " MPH";
+     humidityLi.textContent = "Humidity: " + temp.current.humidity + " %";
+
+    
 
 
      // uv index 0-2 green "low", 3-5 yellow "moderate", 6-7 orange "high", 8-10 red "very high"
      var uvLi = document.createElement("li");
-     uvLi.textContent = "UV Index: " + temp.current.uvi;
+
+     // if condition to set which class applies to span for badge
+
+     if (temp.current.uvi < 2.9) {
+          uvLi.innerHTML = 'UV Index: <span class="btn btn-sm green">' + temp.current.uvi + '</span>';
+     } else if (temp.current.uvi > 3 && temp.current.uvi < 5.9) {
+          uvLi.innerHTML = 'UV Index: <span class="btn btn-sm yellow">' + temp.current.uvi + '</span>';
+     } else if (temp.current.uvi > 6 && temp.current.uvi < 7.9) {
+          uvLi.innerHTML = 'UV Index: <span class="btn btn-sm orange">' + temp.current.uvi + '</span>';
+     } else {
+          uvLi.innerHTML = 'UV Index: <span class="btn btn-sm red">' + temp.current.uvi + '</span>';
+     }
 
 
      // clear old content
