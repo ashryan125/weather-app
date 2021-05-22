@@ -34,18 +34,19 @@ body {
 
 #weather-box {
      border: 1px solid black;
+     padding: 10px;
 }
 
 #title-icon {
      width: 50px;
-     margin: 0 0 5px -7px;
+     margin: 0 0 5px -3px;
 
 }
 
 #current-temp-params {
      list-style: none;
      padding-inline-start: 0;
-     line-height: 30px;
+     line-height: 40px;
 
 }
 
