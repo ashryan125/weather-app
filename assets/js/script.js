@@ -123,28 +123,28 @@ var displayTemp = function (temp, searchTerm) {
                humidity: temp.daily[0].humidity
           },
           {
-               newDate: date.setDate(date.getDate() + 2),
+               newDate: date.setDate(date.getDate() + 1),
                icon: "http://openweathermap.org/img/wn/" + temp.daily[1].weather[0].icon + "@2x.png",
                temp: temp.daily[2].temp.max,
                wind: temp.daily[2].wind_speed,
                humidity: temp.daily[2].humidity
           },
           {
-               newDate: date.setDate(date.getDate() + 3),
+               newDate: date.setDate(date.getDate() + 1),
                icon: "http://openweathermap.org/img/wn/" + temp.daily[2].weather[0].icon + "@2x.png",
                temp: temp.daily[2].temp.max,
                wind: temp.daily[2].wind_speed,
                humidity: temp.daily[2].humidity
           },
           {
-               newDate: date.setDate(date.getDate() + 4),
+               newDate: date.setDate(date.getDate() + 1),
                icon: "http://openweathermap.org/img/wn/" + temp.daily[3].weather[0].icon + "@2x.png",
                temp: temp.daily[3].temp.max,
                wind: temp.daily[3].wind_speed,
                humidity: temp.daily[3].humidity
           },
           {
-               newDate: date.setDate(date.getDate() + 5),
+               newDate: date.setDate(date.getDate() + 1),
                icon: "http://openweathermap.org/img/wn/" + temp.daily[4].weather[0].icon + "@2x.png",
                temp: temp.daily[4].temp.max,
                wind: temp.daily[4].wind_speed,
@@ -153,30 +153,32 @@ var displayTemp = function (temp, searchTerm) {
      ];
 
 
-          $.each(weatherObj[i], function (i, item) {
-               // var divWeather = parseInt($("div#weather5day > div").attr("id").split("day-")[1]);
+          $.each(weatherObj, function (i, item) {
 
-               var divWeather = document.querySelector("#day-1");
+               var divWeather = document.querySelector(`#day-${i + 1}`);
+               $(divWeather).addClass("future-weather-padding");
                // set date
-               var weatherTitle = document.createElement("h4");
-               weatherTitle.textContent = Intl.DateTimeFormat().format(weatherObj.newDate)
+               var weatherTitle = document.createElement("h5");
+               weatherTitle.textContent = Intl.DateTimeFormat().format(item.newDate)
                // create ul
                var ulEl5 = document.createElement("ul");
+               ulEl5.setAttribute("class", "future-weather-ul");
      
                // create icon
-               var iconSrc = weatherObj.icon;
+               var iconSrc = item.icon;
                var iconImg = document.createElement("img");
                iconImg.setAttribute("src", iconSrc);
+               iconImg.setAttribute("class", "weather-icons");
      
                // create li items
                var tempLi5 = document.createElement("li");
-               tempLi5.textContent = "Temp: " + weatherObj.temp + "°F";
+               tempLi5.textContent = "Temp: " + item.temp + "°F";
      
                var windLi5 = document.createElement("li");
-               windLi5.textContent = "Wind: " + weatherObj.wind + " MPH";
+               windLi5.textContent = "Wind: " + item.wind + " MPH";
      
                var humidityLi5 = document.createElement("li");
-               humidityLi5.textContent = "Humidity: " + weatherObj.humidity + " %";
+               humidityLi5.textContent = "Humidity: " + item.humidity + " %";
                
                divWeather.appendChild(weatherTitle);
                divWeather.appendChild(iconImg);
