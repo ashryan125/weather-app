@@ -1,4 +1,5 @@
 var getCityLocation = function (city) {
+    
      var geoUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=d0c4095bfc85fd893ffbd22250d010a9";
 
      // make a request to the geo url
@@ -41,6 +42,9 @@ var citySearchTerm = document.querySelector("#city-search-term");
 var date = new Date();
 
 
+var citylist = document.querySelector("#city-list");
+var searchedCities = [];
+
 
 var formSubmitHandler = function (event) {
      event.preventDefault();
@@ -50,11 +54,31 @@ var formSubmitHandler = function (event) {
      if (cityName) {
           getCityLocation(cityName);
           nameInputEl.value = "";
+          citylist.innerHTML += '<li class="list-group-item city-searched">' + cityName + '</li>';
+          searchedCities.push(cityName);
+
      } else {
           alert("Please enter a valid city");
      }
 
+     // save search city into list and make item clickable for faster input name back getCityLocation
+
+     $('.city-searched').on('click', function() {
+          console.log("city name clicked");
+               // submit name back into getCityLocation
+               var cityClicked = $(this).text();
+               console.log(cityClicked);
+               getCityLocation(cityClicked);
+            
+     });
+
+     localStorage.setItem("citylist", searchedCities);
+     console.log(searchedCities);
+
 };
+
+
+
 
 cityFormEl.addEventListener("submit", formSubmitHandler);
 
@@ -153,42 +177,42 @@ var displayTemp = function (temp, searchTerm) {
      ];
 
 
-          $.each(weatherObj, function (i, item) {
+     $.each(weatherObj, function (i, item) {
 
-               var divWeather = document.querySelector(`#day-${i + 1}`);
-               $(divWeather).addClass("future-weather-padding");
-               // set date
-               var weatherTitle = document.createElement("h5");
-               weatherTitle.textContent = Intl.DateTimeFormat().format(item.newDate)
-               // create ul
-               var ulEl5 = document.createElement("ul");
-               ulEl5.setAttribute("class", "future-weather-ul");
-     
-               // create icon
-               var iconSrc = item.icon;
-               var iconImg = document.createElement("img");
-               iconImg.setAttribute("src", iconSrc);
-               iconImg.setAttribute("class", "weather-icons");
-     
-               // create li items
-               var tempLi5 = document.createElement("li");
-               tempLi5.textContent = "Temp: " + item.temp + "°F";
-     
-               var windLi5 = document.createElement("li");
-               windLi5.textContent = "Wind: " + item.wind + " MPH";
-     
-               var humidityLi5 = document.createElement("li");
-               humidityLi5.textContent = "Humidity: " + item.humidity + " %";
-               
-               divWeather.appendChild(weatherTitle);
-               divWeather.appendChild(iconImg);
-               
-               divWeather.appendChild(ulEl5);
-     
-               ulEl5.appendChild(tempLi5);
-               ulEl5.appendChild(windLi5);
-               ulEl5.appendChild(humidityLi5);
-     
-               // document.getElementById("day-1").innerHTML = Intl.DateTimeFormat().format(weatherObj1.newDate);
-          });
+          var divWeather = document.querySelector(`#day-${i + 1}`);
+          $(divWeather).addClass("future-weather-padding");
+          // set date
+          var weatherTitle = document.createElement("h5");
+          weatherTitle.textContent = Intl.DateTimeFormat().format(item.newDate)
+          // create ul
+          var ulEl5 = document.createElement("ul");
+          ulEl5.setAttribute("class", "future-weather-ul");
+
+          // create icon
+          var iconSrc = item.icon;
+          var iconImg = document.createElement("img");
+          iconImg.setAttribute("src", iconSrc);
+          iconImg.setAttribute("class", "weather-icons");
+
+          // create li items
+          var tempLi5 = document.createElement("li");
+          tempLi5.textContent = "Temp: " + item.temp + "°F";
+
+          var windLi5 = document.createElement("li");
+          windLi5.textContent = "Wind: " + item.wind + " MPH";
+
+          var humidityLi5 = document.createElement("li");
+          humidityLi5.textContent = "Humidity: " + item.humidity + " %";
+
+          divWeather.appendChild(weatherTitle);
+          divWeather.appendChild(iconImg);
+
+          divWeather.appendChild(ulEl5);
+
+          ulEl5.appendChild(tempLi5);
+          ulEl5.appendChild(windLi5);
+          ulEl5.appendChild(humidityLi5);
+
+          // document.getElementById("day-1").innerHTML = Intl.DateTimeFormat().format(weatherObj1.newDate);
+     });
 };

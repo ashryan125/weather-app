@@ -24,13 +24,17 @@ body {
 
 #city-list {
      border-top: 1px solid black;
+     
 }
 
 #city-list li {
      margin-top: 10px;
      background-color: rgb(160, 160, 160);
      text-align: center;
+     padding: 5px 0 5px 0;
 }
+
+
 
 /* main weather forecast */
 
