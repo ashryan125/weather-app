@@ -1,6 +1,6 @@
 var getCityLocation = function (city) {
 
-     var geoUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=d0c4095bfc85fd893ffbd22250d010a9";
+     var geoUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=d0c4095bfc85fd893ffbd22250d010a9";
 
      // make a request to the geo url
      fetch(geoUrl).then(function (geoResponse) {
@@ -87,7 +87,7 @@ cityFormEl.addEventListener("submit", formSubmitHandler);
 var displayTemp = function (temp, searchTerm) {
 
      // show temperature icon
-     var icon = "http://openweathermap.org/img/wn/" + temp.current.weather[0].icon + "@2x.png";
+     var icon = "https://openweathermap.org/img/wn/" + temp.current.weather[0].icon + "@2x.png";
      var iconEl = document.createElement("img");
      iconEl.setAttribute("src", icon);
      iconEl.setAttribute("id", "title-icon");
@@ -148,35 +148,35 @@ var fiveDayWeather = function (futuretemp, searchTerm) {
      var weatherObj = [
           {
                newDate: date.setDate(date.getDate() + 1),
-               icon: "http://openweathermap.org/img/wn/" + futuretemp.daily[0].weather[0].icon + "@2x.png",
+               icon: "https://openweathermap.org/img/wn/" + futuretemp.daily[0].weather[0].icon + "@2x.png",
                temp: futuretemp.daily[0].temp.max,
                wind: futuretemp.daily[0].wind_speed,
                humidity: futuretemp.daily[0].humidity
           },
           {
                newDate: date.setDate(date.getDate() + 1),
-               icon: "http://openweathermap.org/img/wn/" + futuretemp.daily[1].weather[0].icon + "@2x.png",
+               icon: "https://openweathermap.org/img/wn/" + futuretemp.daily[1].weather[0].icon + "@2x.png",
                temp: futuretemp.daily[2].temp.max,
                wind: futuretemp.daily[2].wind_speed,
                humidity: futuretemp.daily[2].humidity
           },
           {
                newDate: date.setDate(date.getDate() + 1),
-               icon: "http://openweathermap.org/img/wn/" + futuretemp.daily[2].weather[0].icon + "@2x.png",
+               icon: "https://openweathermap.org/img/wn/" + futuretemp.daily[2].weather[0].icon + "@2x.png",
                temp: futuretemp.daily[2].temp.max,
                wind: futuretemp.daily[2].wind_speed,
                humidity: futuretemp.daily[2].humidity
           },
           {
                newDate: date.setDate(date.getDate() + 1),
-               icon: "http://openweathermap.org/img/wn/" + futuretemp.daily[3].weather[0].icon + "@2x.png",
+               icon: "https://openweathermap.org/img/wn/" + futuretemp.daily[3].weather[0].icon + "@2x.png",
                temp: futuretemp.daily[3].temp.max,
                wind: futuretemp.daily[3].wind_speed,
                humidity: futuretemp.daily[3].humidity
           },
           {
                newDate: date.setDate(date.getDate() + 1),
-               icon: "http://openweathermap.org/img/wn/" + futuretemp.daily[4].weather[0].icon + "@2x.png",
+               icon: "https://openweathermap.org/img/wn/" + futuretemp.daily[4].weather[0].icon + "@2x.png",
                temp: futuretemp.daily[4].temp.max,
                wind: futuretemp.daily[4].wind_speed,
                humidity: futuretemp.daily[4].humidity
